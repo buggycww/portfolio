@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoWorld — Case Study — Renee Chin</title>
+  <meta name="description" content="EcoWorld: a mixed-reality ecology game for Meta Quest 3, awarded Second Runner-Up at Malaysia Creative Tech Competition 2026.">
+  <meta name="theme-color" content="#0a0b0c">
+  <meta property="og:title" content="EcoWorld — Case Study">
+  <meta property="og:description" content="A mixed-reality ecology game about weather, organisms, and consequence.">
+  <meta property="og:image" content="../assets/og.jpg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="case-study">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="../index.html" aria-label="Renee Chin — home">
+      <span class="brand-mark">RC</span>
+      <span>
+        <span class="brand-name">Renee Chin</span>
+        <span class="brand-role">Gameplay Programmer</span>
+      </span>
+    </a>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="../work.html">Work</a>
+      <a href="../index.html#lab">Lab</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#beyond">Beyond</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="status" href="../index.html#contact"><span class="status-dot"></span>Open to work</a>
+      <a class="btn btn--small" href="../assets/Renee_Chin_Resume.pdf" download>Résumé <span class="btn-icon">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-hero">
+      <p class="eyebrow">Case study / 01 · Solo final-year project</p>
+      <h1 class="case-title">EcoWorld</h1>
+      <p class="case-dek">
+        A mixed-reality ecology game that turns invisible systems into something you can see,
+        touch, and change.
+      </p>
+      <dl class="case-meta">
+        <div><dt>Role</dt><dd>Solo design &amp; programming</dd></div>
+        <div><dt>Engine</dt><dd>Unity</dd></div>
+        <div><dt>Platform</dt><dd>Meta Quest 3</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Recognition</dt><dd>National 2nd Runner-Up</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-cover">
+      <div class="case-cover-grid">
+        <div class="case-cover-frame case-cover-frame--landscape">
+          <img src="../assets/img/ecoworld-detail1.jpg" alt="EcoWorld running on a Meta Quest 3, showing a virtual ecosystem on a table" width="720" height="500">
+        </div>
+        <aside class="case-award case-award--hero">
+          <span>Malaysia Creative Tech Competition / 2026</span>
+          <b>2nd<br>Runner-Up</b>
+          <p>87 entries across 23 institutions. Mixed Reality / “Malaysia 2050” theme.</p>
+        </aside>
+      </div>
+      <div class="case-cover-caption">
+        <span>EcoWorld / Meta Quest 3</span>
+        <span>Project capture</span>
+      </div>
+    </div>
+
+    <article class="case-body">
+      <p class="lead">
+        EcoWorld was my final-year project: an MR serious game about ecological literacy. The goal
+        was not to teach a list of facts, but to let players feel how a small change propagates
+        through an ecosystem.
+      </p>
+
+      <div class="case-tags">
+        <span>Mixed reality</span>
+        <span>HFSM AI</span>
+        <span>Simulation</span>
+        <span>Serious game</span>
+        <span>Solo build</span>
+      </div>
+
+      <h2>The problem</h2>
+      <p>
+        Ecological systems are full of delayed consequences. A population rises, a resource
+        depletes, the weather shifts, and the effect arrives later. Traditional diagrams explain
+        that chain; they do not let you <strong>feel</strong> it.
+      </p>
+      <p>
+        MR gave me a different canvas: a living ecosystem on a table, at human scale, where the
+        player can lean in and change a variable. The design question became: how much of the
+        simulation should the player see, and how quickly should a consequence read?
+      </p>
+
+      <h2>The system</h2>
+      <p>
+        EcoWorld is built from three interlocking layers. Each one can change the others, which is
+        what makes the ecosystem feel alive rather than scripted.
+      </p>
+
+      <div class="system-map">
+        <div class="system-node">
+          <span>01 / Organisms</span>
+          <h4>Behaviour</h4>
+          <p>
+            A hierarchical FSM drives organism behaviour and needs. Organisms respond to
+            environmental pressure without one monolithic update loop.
+          </p>
+        </div>
+        <div class="system-node">
+          <span>02 / Environment</span>
+          <h4>Conditions</h4>
+          <p>
+            Time-of-day and weather change the conditions organisms live in, so the same species
+            can behave differently as the world shifts.
+          </p>
+        </div>
+        <div class="system-node">
+          <span>03 / Stressors</span>
+          <h4>Pressure</h4>
+          <p>
+            Disaster events introduce dynamic stressors such as overpopulation and disease, pushing
+            the system into states the player has to respond to.
+          </p>
+        </div>
+      </div>
+
+      <div class="pullquote">
+        The hard part wasn’t simulating the ecosystem. It was making the simulation legible.
+      </div>
+
+      <h2>What I owned</h2>
+      <p>
+        I owned the design and code end to end: the simulation architecture, the HFSM organism
+        behaviour, the environmental and event systems, the interaction feedback, and the build on
+        Quest 3. I also ran the project through playtests and iterated on what players actually
+        noticed.
+      </p>
+      <ul>
+        <li><strong>Simulation architecture:</strong> separated organisms, environment, and event pressure so each could be tuned independently.</li>
+        <li><strong>Readable feedback:</strong> prioritised states and consequences the player could perceive in the headset over simulation detail they could not.</li>
+        <li><strong>Device constraints:</strong> kept the experience honest on standalone hardware rather than assuming a desktop budget.</li>
+      </ul>
+
+      <h2>The hard part</h2>
+      <p>
+        A simulation with many interacting variables can easily become noise. I had to make
+        choices about what the player sees, what the system hides, and how long a consequence is
+        allowed to take before it stops reading as cause and effect.
+      </p>
+      <p>
+        That is a design problem as much as a programming one. The answer was not “simulate more.”
+        It was to make the important variables visible, keep the loop short enough to learn from,
+        and let the player form a hypothesis before the system confirms it.
+      </p>
+
+      <h2>Outcome</h2>
+      <div class="case-grid-2">
+        <div class="case-card">
+          <h3>A national result</h3>
+          <p>
+            EcoWorld was awarded <strong>Second Runner-Up</strong> at the Malaysia Creative Tech
+            Competition 2026, selected from <strong>87 entries across 23 institutions</strong>.
+          </p>
+          <p>
+            More useful than the placement: the project proved I can take an ambiguous brief,
+            design a system around it, and ship a coherent experience on a constrained device.
+          </p>
+        </div>
+        <div class="case-award">
+          <span>Malaysia Creative Tech Competition / 2026</span>
+          <b>2nd<br>Runner-Up</b>
+          <p>87 entries · 23 institutions · Mixed Reality / Malaysia 2050 theme.</p>
+        </div>
+      </div>
+
+      <h2>What I’d do next</h2>
+      <p>
+        Stronger onboarding: teach the causal loop before asking the player to optimise it. A more
+        explicit performance budget per scenario. And a content pipeline that lets new ecological
+        scenarios be authored without touching the simulation core.
+      </p>
+
+      <div class="case-links">
+        <a class="btn btn--acid" href="https://www.youtube.com/watch?v=ZV7wHhtfDtU" target="_blank" rel="noopener">Watch gameplay <span class="btn-icon">↗</span></a>
+        <a class="btn" href="../index.html#contact">Ask about the build <span class="btn-icon">↗</span></a>
+      </div>
+    </article>
+
+    <div class="case-next">
+      <div>
+        <p>Next case study / 02</p>
+        <a href="2d-shooter.html">2D-Shooter →</a>
+      </div>
+      <a class="project-arrow" href="2d-shooter.html" aria-label="Next case study: 2D-Shooter">↗</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-mark">© 2026 Renee Chin</span>
+    <span>Designed &amp; built from scratch</span>
+    <a class="footer-top" href="#top">Back to top <span>↑</span></a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

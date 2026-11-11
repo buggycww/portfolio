@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Miliastra Wonderland — Professional Case Study — Renee Chin</title>
+  <meta name="description" content="A professional case study from Renee Chin's game programming internship at Virtuos Kuala Lumpur: core gameplay for a 3D Bomberman mode inside Genshin Impact's Miliastra Wonderland.">
+  <meta name="theme-color" content="#0a0b0c">
+  <meta property="og:title" content="Miliastra Wonderland — Professional Case Study">
+  <meta property="og:description" content="Core gameplay for a 3D Bomberman mode inside Genshin Impact.">
+  <meta property="og:image" content="../assets/og.jpg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="case-study">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="../index.html" aria-label="Renee Chin — home">
+      <span class="brand-mark">RC</span>
+      <span>
+        <span class="brand-name">Renee Chin</span>
+        <span class="brand-role">Gameplay Programmer</span>
+      </span>
+    </a>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="../work.html">Work</a>
+      <a href="../index.html#lab">Lab</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#beyond">Beyond</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="status" href="../index.html#contact"><span class="status-dot"></span>Open to work</a>
+      <a class="btn btn--small" href="../assets/Renee_Chin_Resume.pdf" download>Résumé <span class="btn-icon">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-hero">
+      <p class="eyebrow">Professional case study / 03</p>
+      <h1 class="case-title">Miliastra Wonderland</h1>
+      <p class="case-dek">
+        Core gameplay for a 3D Bomberman mode inside Genshin Impact — built inside a large existing
+        codebase, with no assets I can show.
+      </p>
+      <dl class="case-meta">
+        <div><dt>Role</dt><dd>Game Programming Intern</dd></div>
+        <div><dt>Studio</dt><dd>Virtuos Kuala Lumpur</dd></div>
+        <div><dt>Dates</dt><dd>Feb – Jul 2026</dd></div>
+        <div><dt>Project</dt><dd>Genshin Impact / Miliastra Wonderland</dd></div>
+        <div><dt>Disclosure</dt><dd>NDA-safe case study</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-cover">
+      <div class="case-hero-art" aria-hidden="true">
+        <div class="miliastra-grid">
+          <span class="miliastra-cell"></span><span class="miliastra-cell is-bomb"></span><span class="miliastra-cell"></span><span class="miliastra-cell"></span>
+          <span class="miliastra-cell"></span><span class="miliastra-cell"></span><span class="miliastra-cell is-hot"></span><span class="miliastra-cell"></span>
+          <span class="miliastra-cell"></span><span class="miliastra-cell is-bomb"></span><span class="miliastra-cell"></span><span class="miliastra-cell"></span>
+        </div>
+        <span class="miliastra-label">Grid / elemental bombs / range</span>
+      </div>
+      <div class="case-cover-caption">
+        <span>Abstract representation — no game assets shown</span>
+        <span>Professional work / NDA</span>
+      </div>
+    </div>
+
+    <article class="case-body">
+      <p class="lead">
+        Miliastra Wonderland is a UGC mode inside Genshin Impact. I worked on a 3D Bomberman game
+        within it as a game programming intern at Virtuos Kuala Lumpur, owning core gameplay logic
+        from the bomb loop through the tutorial.
+      </p>
+
+      <div class="case-tags">
+        <span>Professional</span>
+        <span>Gameplay systems</span>
+        <span>Grid</span>
+        <span>Elemental interactions</span>
+        <span>Onboarding</span>
+      </div>
+
+      <h2>What I owned</h2>
+      <ul>
+        <li><strong>Elemental bombs:</strong> placement, behaviour, and the interactions between bomb types.</li>
+        <li><strong>Upgrade paths:</strong> progression that changes how the core bomb loop plays.</li>
+        <li><strong>Grid system:</strong> clean placement and movement on a discrete board.</li>
+        <li><strong>Range indicators:</strong> readable visual feedback for where a bomb will reach.</li>
+        <li><strong>Skills and tutorial:</strong> the player’s abilities, plus the sequence that teaches the loop.</li>
+      </ul>
+
+      <h2>Integration is the job</h2>
+      <p>
+        The hardest part was not any single system. It was integration: reading an existing codebase,
+        finding the right extension points, and deciding when a pragmatic version was enough versus
+        when a reusable abstraction would pay for itself.
+      </p>
+      <p>
+        Early on I optimised for getting things working. That was useful for learning the codebase,
+        but it created cleanup work when the feature grew. The lesson was not “always architect
+        first.” It was: keep the integration boundary clean enough that you can refactor later
+        without rewriting the feature.
+      </p>
+
+      <div class="pullquote">
+        The first version has to work. The second version has to fit.
+      </div>
+
+      <h2>What a playtest changes</h2>
+      <p>
+        A range indicator can look correct in the editor and still be unreadable in play. The
+        project ran on daily stand-ups, regular playtests, and planning with designers and
+        engineers, and that loop changed what I prioritised: clarity of the board state over
+        additional simulation detail.
+      </p>
+      <p>
+        The same applied to the tutorial. It is not documentation bolted onto the game; it is the
+        first level of the gameplay loop. Building it forced me to explain the bomb, the grid, and
+        the upgrade path in the same language the player experiences them.
+      </p>
+
+      <h2>Constraints</h2>
+      <div class="case-grid-2">
+        <div class="case-card">
+          <h3>What made it hard</h3>
+          <p>
+            A large existing codebase, an established feature set, and an NDA that rules out public
+            screenshots. The work had to be understood through systems and decisions, not a trailer.
+          </p>
+        </div>
+        <div class="case-card">
+          <h3>How I worked</h3>
+          <p>
+            Read the surrounding code before writing. Ask where the feature is supposed to live.
+            Keep the first implementation small enough to test, then make the boundary explicit when
+            the feature grows.
+          </p>
+        </div>
+      </div>
+
+      <h2>What I’d do differently</h2>
+      <p>
+        Spend more time reading patterns before the first commit. Write down integration assumptions
+        so they can be challenged early. Instrument the grid and bomb state sooner, because a
+        gameplay system you cannot observe is a gameplay system you cannot tune.
+      </p>
+
+      <h2>What I can share</h2>
+      <p>
+        No game assets or unreleased details — but I can talk through the systems, the integration
+        decisions, the playtest loop, and what I would change. If you are hiring for a gameplay
+        role, that conversation is the useful part.
+      </p>
+
+      <div class="case-links">
+        <a class="btn btn--acid" href="../index.html#contact">Ask me about it <span class="btn-icon">↗</span></a>
+        <a class="btn" href="2d-shooter.html">Previous case study <span class="btn-icon">←</span></a>
+      </div>
+    </article>
+
+    <div class="case-next">
+      <div>
+        <p>Back to the beginning / 01</p>
+        <a href="ecoworld.html">EcoWorld →</a>
+      </div>
+      <a class="project-arrow" href="ecoworld.html" aria-label="Back to EcoWorld case study">↗</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-mark">© 2026 Renee Chin</span>
+    <span>Designed &amp; built from scratch</span>
+    <a class="footer-top" href="#top">Back to top <span>↑</span></a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
