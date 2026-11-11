@@ -1,14 +1,13 @@
 # Renee Chin — portfolio
 
-A small, dependency-free portfolio for gameplay programming, with room for 2D/3D animation and
-modelling work as it is added.
+A small, dependency-free portfolio for gameplay programming.
 
 ## Stack
 
 - Hand-written HTML, CSS, and vanilla JavaScript
 - No build step, no framework, no external font or analytics requests
 - Responsive layout and reduced-motion support
-- Local project images and a local résumé PDF
+- Local project images, a local résumé PDF, and local gameplay videos
 
 ## Preview locally
 
@@ -26,17 +25,18 @@ Then open <http://localhost:8000>.
 portfolio/
 ├─ index.html              homepage
 ├─ 404.html                not-found page
-├─ work.html               filterable archive
+├─ work.html               project list with filters
 ├─ work/
-│  ├─ ecoworld.html        case study 01
-│  ├─ 2d-shooter.html      case study 02
-│  └─ miliastra.html       case study 03
+│  ├─ ecoworld.html        project 01
+│  ├─ 2d-shooter.html      project 02
+│  └─ rush-cavate.html     project 03
 ├─ css/style.css           the whole design system
 ├─ js/
 │  ├─ main.js              nav, reveal, filters
-│  └─ quadtree.js          interactive hero canvas
+│  └─ quadtree.js          interactive point quadtree canvas
 ├─ assets/
 │  ├─ img/                 project images
+│  ├─ video/               gameplay clips and systems previews
 │  ├─ game/                source art used for the 2D-Shooter still
 │  ├─ Renee_Chin_Resume.pdf
 │  ├─ favicon.svg
@@ -47,18 +47,14 @@ portfolio/
 ## Add a project
 
 1. Put a 16:10 or 4:3 image in `assets/img/` (or make a graphic card).
-2. Copy an `<a class="project-card archive-card">` block in `work.html`.
+2. Copy a `<a class="project-card archive-card">` block in `work.html`.
 3. Set `data-category` to one or more of `games`, `professional`, `tools`.
 4. Update the `.filter-count` text. The filter code counts visible cards automatically.
-5. If the project earns a deep dive, add a page in `work/` and link the card to it.
-
-The homepage has three featured cards and three compact cards. Swap one in when a project becomes
-more relevant than what is there.
+5. If the project gets a page, add it in `work/` and link the card to it.
 
 ## Deploy
 
-Any static host works. The full step-by-step guide — including GitHub Pages, Netlify Drop, custom
-domains, and a pre-publish checklist — is in [DEPLOY.md](DEPLOY.md).
+Any static host works. The full guide is in [DEPLOY.md](DEPLOY.md).
 
 **GitHub Pages:** push this folder to a repository, then Settings → Pages → deploy from the branch
 and root folder. For a `username.github.io` site, name the repository `buggycww.github.io` and put
@@ -72,16 +68,12 @@ previews do not reliably resolve relative image paths.
 
 ## Content notes
 
-- EcoWorld, 2D-Shooter, The Misled, Everything is Against You, DJ Dash!, Veils of Forgotten Power,
-  and the C++ systems work are presented with project captures or graphics made from project
-  assets.
-- The 2D-Shooter still is a promotional composition built from the game's own art, not a raw
-  in-game screenshot. This is stated in the case study caption.
-- Miliastra Wonderland and the unannounced multiplayer FPS are NDA-safe summaries. No game assets
-  from either project are shown.
-- Third-party art and audio licenses used inside the games remain with their original authors.
-- Animation and 3D modelling are intentionally marked as upcoming. Replace those cards with real
-  work as it is ready; do not publish placeholder art as a project.
+- EcoWorld, 2D-Shooter, The Misled, Everything is Against You, Once Upon a Ball, Omamak, DJ Dash!,
+  and Veils of Forgotten Power are shown with project captures.
+- The 2D-Shooter page uses a short local gameplay recording and three screenshots.
+- Rush-Cavate is under NDA. Its video and images are system diagrams, not game footage. This is
+  stated on the page.
+- The unannounced multiplayer FPS is described in general terms only.
 
 ## Contact
 

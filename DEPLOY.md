@@ -24,7 +24,7 @@ thing visitors reach.
 
 ## Option A — Netlify Drop (fastest, about 2 minutes)
 
-1. Download the `Renee_Chin_Portfolio.zip` supplied with this project and unzip it.
+1. Zip this folder (or download it from the repository) and unzip it.
 2. Go to <https://app.netlify.com/drop>.
 3. Drag the **contents** of the unzipped folder onto the page — or drag the ZIP itself.
 4. Netlify gives you a live URL immediately, for example `https://calm-panda-123.netlify.app`.
@@ -148,11 +148,11 @@ instructions instead.
 - [ ] **Decide about the résumé PDF.** `assets/Renee_Chin_Resume.pdf` is public and includes your
       phone number. If you do not want that public, replace it with a web version that has email
       only.
-- [ ] **Review the NDA-safe copy.** The Miliastra and unannounced FPS pages describe systems, not
+- [ ] **Review the NDA-safe copy.** The Rush-Cavate page and the FPS card describe systems, not
       assets. Confirm with Virtuos what is comfortable to publish before sharing the link widely.
 - [ ] **Check the site on a phone.** The layout is responsive, but test the menu, filters, and
-      case-study pages on a real device.
-- [ ] **Test the links.** Open the archive, each case study, GitHub, itch.io, YouTube, and the
+      project pages and video playback on a real device.
+- [ ] **Test the links.** Open the archive, each project page, GitHub, itch.io, YouTube, and the
       résumé download.
 - [ ] **Add analytics only if you want it.** There is none by default. If you add any, update the
       privacy note and keep it lightweight.

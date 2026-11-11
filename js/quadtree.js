@@ -1,6 +1,6 @@
-/* An interactive, small quadtree for the hero panel.
-   It stores axis-aligned boxes, mirrors the broad-phase used in 2D-Shooter,
-   and rebuilds only when the canvas is resized. */
+/* A small point quadtree for the hero panel.
+   Points are stored in the deepest node that contains them.
+   A query follows the pointer and highlights every point inside it. */
 (function () {
   "use strict";
 
@@ -10,16 +10,17 @@
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
 
-  const CAPACITY = 5;
-  const MAX_DEPTH = 5;
-  const ENTRY_COUNT = 86;
+  const CAPACITY = 4;
+  const MAX_DEPTH = 6;
+  const POINT_COUNT = 110;
   const QUERY_W = 148;
   const QUERY_H = 108;
+  const ACCENT = "195, 155, 255";
 
   let width = 0;
   let height = 0;
   let dpr = 1;
-  let entries = [];
+  let points = [];
   let root = null;
   let query = { x: 0, y: 0, w: QUERY_W, h: QUERY_H };
   let pointer = null;
@@ -31,24 +32,6 @@
     return min + Math.random() * (max - min);
   }
 
-  function intersects(a, b) {
-    return (
-      a.x < b.x + b.w &&
-      a.x + a.w > b.x &&
-      a.y < b.y + b.h &&
-      a.y + a.h > b.y
-    );
-  }
-
-  function contains(outer, inner) {
-    return (
-      inner.x >= outer.x &&
-      inner.x + inner.w <= outer.x + outer.w &&
-      inner.y >= outer.y &&
-      inner.y + inner.h <= outer.y + outer.h
-    );
-  }
-
   class Node {
     constructor(x, y, w, h, depth) {
       this.x = x;
@@ -56,7 +39,7 @@
       this.w = w;
       this.h = h;
       this.depth = depth;
-      this.items = [];
+      this.points = [];
       this.children = null;
     }
 
@@ -64,15 +47,11 @@
       return this.children === null;
     }
 
-    get quadrant() {
-      return { x: this.x + this.w / 2, y: this.y + this.h / 2 };
-    }
-
     subdivide() {
       if (this.depth >= MAX_DEPTH) return;
       const halfW = this.w / 2;
       const halfH = this.h / 2;
-      if (halfW < 18 || halfH < 18) return;
+      if (halfW < 16 || halfH < 16) return;
 
       this.children = [
         new Node(this.x, this.y, halfW, halfH, this.depth + 1),
@@ -81,61 +60,47 @@
         new Node(this.x + halfW, this.y + halfH, halfW, halfH, this.depth + 1),
       ];
 
-      const old = this.items;
-      this.items = [];
-      old.forEach((item) => insertInto(this, item));
+      const old = this.points;
+      this.points = [];
+      old.forEach((point) => insertInto(this, point));
     }
   }
 
-  function childFor(node, item) {
+  // Half-open splits: a point on a boundary belongs to exactly one child.
+  function childFor(node, point) {
     const midX = node.x + node.w / 2;
     const midY = node.y + node.h / 2;
-
-    // A box that crosses a split stays in the parent.
-    if (item.x < midX && item.x + item.w > midX) return null;
-    if (item.y < midY && item.y + item.h > midY) return null;
-
-    const left = item.x + item.w <= midX;
-    const above = item.y + item.h <= midY;
-
-    if (left && above) return node.children[0];
-    if (!left && above) return node.children[1];
-    if (left && !above) return node.children[2];
+    const right = point.x >= midX;
+    const bottom = point.y >= midY;
+    if (!right && !bottom) return node.children[0];
+    if (right && !bottom) return node.children[1];
+    if (!right && bottom) return node.children[2];
     return node.children[3];
   }
 
-  function insertInto(node, item) {
+  function insertInto(node, point) {
     if (!node.isLeaf) {
-      const child = childFor(node, item);
-      if (child) {
-        insertInto(child, item);
-        return;
-      }
-      node.items.push(item);
+      insertInto(childFor(node, point), point);
       return;
     }
 
-    node.items.push(item);
-    if (node.items.length > CAPACITY) node.subdivide();
+    node.points.push(point);
+    if (node.points.length > CAPACITY) node.subdivide();
   }
 
   function build() {
-    const pad = 12;
+    const pad = 14;
     root = new Node(pad, pad, width - pad * 2, height - pad * 2, 0);
-    entries = [];
+    points = [];
 
-    for (let i = 0; i < ENTRY_COUNT; i++) {
-      const w = rand(9, 34);
-      const h = rand(9, 34);
-      const item = {
-        x: rand(pad, width - pad - w),
-        y: rand(pad, height - pad - h),
-        w,
-        h,
+    for (let i = 0; i < POINT_COUNT; i++) {
+      const point = {
+        x: rand(pad + 2, width - pad - 2),
+        y: rand(pad + 2, height - pad - 2),
         hot: false,
       };
-      entries.push(item);
-      insertInto(root, item);
+      points.push(point);
+      insertInto(root, point);
     }
   }
 
@@ -154,8 +119,14 @@
   }
 
   function markQuery() {
-    entries.forEach((item) => {
-      item.hot = intersects(item, query);
+    const x2 = query.x + query.w;
+    const y2 = query.y + query.h;
+    points.forEach((point) => {
+      point.hot =
+        point.x >= query.x &&
+        point.x < x2 &&
+        point.y >= query.y &&
+        point.y < y2;
     });
   }
 
@@ -164,15 +135,15 @@
     const depth = node.depth;
     ctx.strokeStyle =
       depth === 0
-        ? "rgba(215,255,95,0.18)"
+        ? `rgba(${ACCENT},0.22)`
         : depth < 3
-        ? "rgba(241,238,230,0.10)"
-        : "rgba(241,238,230,0.055)";
+        ? "rgba(243,238,251,0.10)"
+        : "rgba(243,238,251,0.055)";
     ctx.lineWidth = 1;
     ctx.strokeRect(node.x + 0.5, node.y + 0.5, node.w - 1, node.h - 1);
 
     if (node.isLeaf) {
-      ctx.fillStyle = `rgba(215,255,95,${0.01 + depth * 0.004})`;
+      ctx.fillStyle = `rgba(${ACCENT},${0.008 + depth * 0.004})`;
       ctx.fillRect(node.x + 1, node.y + 1, node.w - 2, node.h - 2);
     }
 
@@ -186,14 +157,14 @@
     const h = query.h;
 
     ctx.save();
-    ctx.fillStyle = "rgba(215,255,95,0.045)";
+    ctx.fillStyle = `rgba(${ACCENT},0.055)`;
     ctx.fillRect(x, y, w, h);
-    ctx.strokeStyle = "rgba(215,255,95,0.9)";
+    ctx.strokeStyle = `rgba(${ACCENT},0.92)`;
     ctx.lineWidth = 1;
     ctx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
 
     const tick = 9;
-    ctx.strokeStyle = "rgba(215,255,95,1)";
+    ctx.strokeStyle = `rgba(${ACCENT},1)`;
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(x, y + tick);
@@ -211,7 +182,7 @@
     ctx.stroke();
 
     ctx.font = '8px "Cascadia Mono", Consolas, monospace';
-    ctx.fillStyle = "rgba(215,255,95,0.9)";
+    ctx.fillStyle = `rgba(${ACCENT},0.92)`;
     ctx.fillText("QUERY", x + 8, y + 14);
     ctx.restore();
   }
@@ -232,7 +203,7 @@
     ctx.clearRect(0, 0, width, height);
 
     // faint base grid
-    ctx.strokeStyle = "rgba(241,238,230,0.035)";
+    ctx.strokeStyle = "rgba(243,238,251,0.035)";
     ctx.lineWidth = 1;
     for (let x = 0; x < width; x += 24) {
       ctx.beginPath();
@@ -249,25 +220,32 @@
 
     drawNode(root);
 
-    // entries
-    entries.forEach((item) => {
-      if (item.hot) {
-        ctx.fillStyle = "rgba(215,255,95,0.92)";
-        ctx.strokeStyle = "rgba(215,255,95,0.4)";
+    // points
+    points.forEach((point) => {
+      if (point.hot) {
+        ctx.fillStyle = `rgba(${ACCENT},0.98)`;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 3.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = `rgba(${ACCENT},0.45)`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 6.5, 0, Math.PI * 2);
+        ctx.stroke();
       } else {
-        ctx.fillStyle = "rgba(241,238,230,0.18)";
-        ctx.strokeStyle = "rgba(241,238,230,0.12)";
+        ctx.fillStyle = "rgba(243,238,251,0.42)";
+        ctx.beginPath();
+        ctx.arc(point.x, point.y, 1.8, 0, Math.PI * 2);
+        ctx.fill();
       }
-      ctx.fillRect(item.x, item.y, item.w, item.h);
-      ctx.strokeRect(item.x + 0.5, item.y + 0.5, item.w - 1, item.h - 1);
     });
 
     drawQuery();
 
     // corner label
     ctx.font = '8px "Cascadia Mono", Consolas, monospace';
-    ctx.fillStyle = "rgba(241,238,230,0.35)";
-    ctx.fillText(String(entries.length).padStart(2, "0") + " BOXES", 14, height - 12);
+    ctx.fillStyle = "rgba(243,238,251,0.35)";
+    ctx.fillText(String(points.length).padStart(3, "0") + " POINTS", 14, height - 12);
   }
 
   function frame(time) {

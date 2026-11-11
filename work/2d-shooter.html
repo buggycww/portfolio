@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2D-Shooter — Technical Case Study — Renee Chin</title>
-  <meta name="description" content="A technical case study of 2D-Shooter: a C++17 / SDL3 action platformer with AABB collision, a quadtree broad-phase, and a debug overlay.">
-  <meta name="theme-color" content="#0a0b0c">
-  <meta property="og:title" content="2D-Shooter — Technical Case Study">
-  <meta property="og:description" content="An action platformer built without an engine.">
+  <title>2D-Shooter — Renee Chin</title>
+  <meta name="description" content="2D-Shooter: a C++17 / SDL3 action platformer with box (AABB) collision, a quadtree, TMX tilemaps, and a debug overlay.">
+  <meta name="theme-color" content="#08070c">
+  <meta property="og:title" content="2D-Shooter — Renee Chin">
+  <meta property="og:description" content="A 2D action platformer built without an engine.">
   <meta property="og:image" content="../assets/og.jpg">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/style.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="case-study">
+<body class="project-page">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
@@ -26,9 +26,7 @@
     </a>
     <nav class="nav" id="primary-nav" aria-label="Primary">
       <a href="../work.html">Work</a>
-      <a href="../index.html#lab">Lab</a>
       <a href="../index.html#about">About</a>
-      <a href="../index.html#beyond">Beyond</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
     <div class="header-actions">
@@ -42,11 +40,10 @@
 
   <main id="main">
     <header class="case-hero">
-      <p class="eyebrow">Case study / 02 · Technical deep dive</p>
+      <p class="eyebrow">Project / 02 · Personal project</p>
       <h1 class="case-title">2D-Shooter</h1>
       <p class="case-dek">
-        A 2D action platformer built without an engine — because I wanted to understand the parts
-        an engine normally hides.
+        A 2D action platformer built from scratch in C++17 and SDL3. No engine.
       </p>
       <dl class="case-meta">
         <div><dt>Role</dt><dd>Solo programming</dd></div>
@@ -57,130 +54,62 @@
       </dl>
     </header>
 
-    <div class="case-cover">
-      <div class="case-cover-frame case-cover-frame--cinema">
-        <img src="../assets/img/2dshooter-case.jpg" alt="2D-Shooter gameplay still with a pixel-art city, player, enemies, and projectiles" width="1600" height="720">
-      </div>
-      <div class="case-cover-caption">
-        <span>2D-Shooter / night city</span>
-        <span>Promotional still composed from the game’s own assets</span>
-      </div>
+    <div class="project-video">
+      <video controls preload="metadata" playsinline poster="../assets/img/2dshooter.jpg" aria-label="2D-Shooter gameplay">
+        <source src="../assets/video/2d-shooter.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="project-gallery">
+      <img src="../assets/img/2d-shooter-shot-01.jpg" alt="2D-Shooter gameplay with debug overlay" width="1600" height="900" loading="lazy">
+      <img src="../assets/img/2d-shooter-shot-02.jpg" alt="2D-Shooter city level" width="1600" height="720" loading="lazy">
+      <img src="../assets/img/2d-shooter-shot-03.jpg" alt="2D-Shooter player jumping" width="1066" height="600" loading="lazy">
     </div>
 
     <article class="case-body">
       <p class="lead">
-        I built 2D-Shooter to learn what an engine does for you. No Unity, no Unreal: SDL3 for
-        windowing, input, and audio; tinyxml2 for TMX maps; C++17 for everything else.
+        I built 2D-Shooter to learn what a game engine does. It uses SDL3 for windowing, input, and
+        audio, tinyxml2 for TMX maps, and C++17 for the rest.
       </p>
 
-      <div class="case-tags">
-        <span>Custom engine</span>
-        <span>AABB collision</span>
-        <span>Quadtree</span>
-        <span>TMX tilemaps</span>
-        <span>Profiling</span>
-      </div>
+      <h2>What I did</h2>
+      <ul>
+        <li>Wrote the game loop, input, rendering, audio, and asset loading.</li>
+        <li>Added box (AABB) collision with per-axis resolution. Actors resolve first, then level geometry.</li>
+        <li>Used a quadtree for collision checks so the game does not test every object against every tile.</li>
+        <li>Loaded levels from TMX files and spawned players and enemies from the map data.</li>
+        <li>Added animation states, parallax backgrounds, and a debug overlay with frame and quadtree stats.</li>
+      </ul>
 
-      <h2>The frame</h2>
+      <h2>Collision</h2>
       <p>
-        The game runs on a delta-time loop: poll events, update every dynamic object, resolve
-        collisions, draw the scene, present. The same loop also collects frame, update, and draw
-        timings so I can see where the time goes without attaching a profiler.
-      </p>
-      <p>
-        The viewport follows the player with a vertical dead-band and an exponential smoothing
-        factor, so the camera does not snap when the player crosses a threshold. The background is
-        drawn in four parallax layers at different scroll factors.
+        Movement resolves one axis at a time. The game tests actors first, then rechecks the level
+        at the new position. Static geometry is resolved last, so the player cannot be pushed into a
+        wall. Bullets use the movement axis instead of the shallowest axis, because small fast
+        objects can pop out of walls.
       </p>
 
-      <h2>Collision, in two passes</h2>
+      <h2>Why this quadtree uses boxes</h2>
       <p>
-        Collision is AABB, resolved one axis at a time. On each axis the game tests actors first,
-        then re-queries the static level at the tentative position. Static geometry is resolved last
-        so it always wins — a player pushed by an enemy cannot end up inside a wall.
+        My separate quadtree visualiser stores points. For collision, a point is not enough: a large
+        box can overlap the player while its centre is outside the player. 2D-Shooter stores an
+        axis-aligned box for each object instead, so collision checks can find every box that
+        overlaps a query. The idea is the same; the stored shape is different.
       </p>
-      <pre class="code-block"><code><span class="c">// actors first, then re-query the level at the new position</span>
-<span class="k">for</span> (<span class="k">const</span> ObjectRef&amp; ref : gs.actors) resolveAgainst(...);
-gs.collision.query(colliderBounds(obj, tentativePos), levelCandidates);
-<span class="k">for</span> (GameObject* objB : levelCandidates) resolveAgainst(*objB);</code></pre>
-      <p>
-        A one-pixel sensor under the player handles grounding. Bullets use the movement-axis rule
-        instead of shallowest-axis resolution: they are small and fast enough that the shallowest
-        axis can pop them out of the top or bottom of a wall instead of stopping them.
-      </p>
-
-      <h2>A quadtree, not a point tree</h2>
-      <p>
-        My first quadtree only indexed points, which is not enough to find boxes that overlap a
-        collider — a large box can overlap a query while its centre sits outside it. The broad
-        phase stores a full AABB for every entry.
-      </p>
-      <p>
-        A box is stored exactly once, in the deepest node that fully contains it. Boxes that
-        straddle a split stay in the parent, and a query tests every visited node, so those boxes
-        are still found. Half-open intervals (<code>[x, x+w)</code>) guarantee that a point on a
-        boundary belongs to exactly one child.
-      </p>
-      <pre class="code-block"><code><span class="c">// half-open intervals keep points in exactly one child</span>
-<span class="k">bool</span> AABB::contains(<span class="k">float</span> px, <span class="k">float</span> py) <span class="k">const</span> {
-  <span class="k">return</span> px &gt;= x &amp;&amp; px &lt; x + w &amp;&amp;
-         py &gt;= y &amp;&amp; py &lt; y + h;
-}</code></pre>
-
-      <div class="pullquote">
-        An engine is a set of decisions. Building without one made those decisions visible.
-      </div>
-
-      <h2>Content and state</h2>
-      <p>
-        Levels load from TMX, with tile layers and object groups. Tiles are mapped through their
-        first GID into the right tileset, then turned into static level objects. Players and
-        enemies are spawned from the object layer, which keeps level authoring out of the code.
-      </p>
-      <p>
-        Animation is a small state machine: idle, running, jumping, hit, dead. Some states preserve
-        the run-cycle phase when transitioning so the legs do not reset mid-stride. Audio is handled
-        through SDL3_mixer for music, shooting, hits, and jump sounds.
-      </p>
-
-      <h2>Instrumentation</h2>
-      <p>
-        The debug overlay shows FPS, frame time, worst frame, update time, draw time, player state,
-        grounded state, active bullets, enemies, objects, quadtree node count, and quadtree entry
-        count. It turns “it feels slow” into a number I can compare across changes.
-      </p>
-
-      <div class="case-grid-2">
-        <div class="case-card">
-          <h3>What I’d change</h3>
-          <p>
-            Move physics to a fixed timestep so collision behaviour is reproducible across frame
-            rates. Add automated tests around the quadtree and AABB edge cases. Revisit the dynamic
-            object path once actor counts grow beyond the current small set.
-          </p>
-        </div>
-        <div class="case-card">
-          <h3>What it taught me</h3>
-          <p>
-            Broad phase and narrow phase are separate problems. Half-open intervals remove a whole
-            class of duplicate-query bugs. And an overlay that shows the frame is worth more than a
-            guess about where the time went.
-          </p>
-        </div>
-      </div>
 
       <div class="case-links">
-        <a class="btn btn--acid" href="https://github.com/buggycww/2D-Shooter" target="_blank" rel="noopener">Read the source <span class="btn-icon">↗</span></a>
-        <a class="btn" href="ecoworld.html">Previous case study <span class="btn-icon">←</span></a>
+        <a class="btn btn--primary" href="https://github.com/buggycww/2D-Shooter" target="_blank" rel="noopener">Source code <span class="btn-icon">↗</span></a>
+        <a class="btn" href="../work.html">All projects <span class="btn-icon">←</span></a>
       </div>
     </article>
 
     <div class="case-next">
       <div>
-        <p>Next case study / 03</p>
-        <a href="miliastra.html">Miliastra Wonderland →</a>
+        <p>Next project / 03</p>
+        <a href="rush-cavate.html">Rush-Cavate →</a>
       </div>
-      <a class="project-arrow" href="miliastra.html" aria-label="Next case study: Miliastra Wonderland">↗</a>
+      <a class="project-arrow" href="rush-cavate.html" aria-label="Next project: Rush-Cavate">↗</a>
     </div>
   </main>
 
