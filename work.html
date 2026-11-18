@@ -25,7 +25,8 @@
       </span>
     </a>
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="work.html">Work</a>
+      <a href="index.html">Home</a>
+      <a href="work.html" aria-current="page">Work</a>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
     </nav>
@@ -48,7 +49,7 @@
             Personal, team, and professional projects. Gameplay programming, tools, and a few
             smaller games.
           </p>
-          <div class="archive-count"><b>11</b> projects · updated Nov 2026</div>
+          <div class="archive-count"><b>12</b> projects · updated Nov 2026</div>
         </div>
       </div>
     </section>
@@ -60,7 +61,7 @@
         <button class="filter-btn" type="button" data-filter="professional" aria-pressed="false">Professional</button>
         <button class="filter-btn" type="button" data-filter="tools" aria-pressed="false">Tools</button>
         <span class="filter-spacer"></span>
-        <span class="filter-count" aria-live="polite">11 projects</span>
+        <span class="filter-count" aria-live="polite">12 projects</span>
       </div>
 
       <div class="archive-grid">
@@ -107,20 +108,7 @@
           </div>
         </a>
 
-        <article class="project-card archive-card" data-category="professional" data-reveal>
-          <div class="archive-graphic nda-art" aria-hidden="true">
-            <span class="nda-mark">NDA</span>
-            <span class="nda-line">Unannounced / multiplayer FPS</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>2026 · Virtuos KL</span><span class="meta-accent">Confidential</span></div>
-            <h2 class="project-title">Multiplayer FPS</h2>
-            <p class="project-desc">Player-facing systems for an unannounced multiplayer FPS: shop, match flow, player status, and QTE interactions.</p>
-            <div class="project-foot"><span>Under NDA</span><span class="project-arrow">·</span></div>
-          </div>
-        </article>
-
-        <a class="project-card archive-card" href="https://www.youtube.com/watch?v=BmdbN74KQ8o" target="_blank" rel="noopener" data-category="games" data-reveal>
+        <a class="project-card archive-card" href="work/misled.html" data-category="games" data-reveal>
           <div class="project-media">
             <img src="assets/img/misled.jpg" alt="The Misled title screen" width="1200" height="720" loading="lazy">
             <span class="card-badge">Unreal Engine</span>
@@ -129,11 +117,29 @@
             <div class="project-meta"><span>2026 · Team project</span><span class="meta-accent">Combat</span></div>
             <h2 class="project-title">The Misled</h2>
             <p class="project-desc">A souls-like action RPG. I worked on chainable attacks, shield behaviour, and the final boss.</p>
-            <div class="project-foot"><span>Watch gameplay</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
 
-        <a class="project-card archive-card" href="https://buggycww.itch.io/everything-is-against-you" target="_blank" rel="noopener" data-category="games" data-reveal data-delay="1">
+        <a class="project-card archive-card" href="work/warrior-rpg.html" data-category="games" data-reveal data-delay="1">
+          <div class="archive-graphic warrior-art" aria-hidden="true">
+            <span class="warrior-dmg">1,824</span>
+            <div class="warrior-bars">
+              <span class="warrior-row"><span>HP</span><span class="warrior-bar"><i style="width:74%"></i></span></span>
+              <span class="warrior-row"><span>Rage</span><span class="warrior-bar warrior-bar--rage"><i style="width:42%"></i></span></span>
+              <span class="warrior-row"><span>Atk</span><span class="warrior-bar warrior-bar--atk"><i style="width:61%"></i></span></span>
+            </div>
+            <span class="warrior-label">GAS / attributes / execution calc</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta"><span>2026 · Solo</span><span class="meta-accent">C++ · GAS</span></div>
+            <h2 class="project-title">Warrior RPG</h2>
+            <p class="project-desc">A third-person action RPG in Unreal Engine 5: Gameplay Ability System abilities, attribute-driven damage, and enemy AI.</p>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
+          </div>
+        </a>
+
+        <a class="project-card archive-card" href="work/everything-is-against-you.html" data-category="games" data-reveal data-delay="1">
           <div class="project-media">
             <img src="assets/img/everything-wide.jpg" alt="Everything is Against You cover art" width="800" height="500" loading="lazy">
             <span class="card-badge">Published</span>
@@ -142,11 +148,11 @@
             <div class="project-meta"><span>2026 · Solo</span><span class="meta-accent">Unity</span></div>
             <h2 class="project-title">Everything is Against You</h2>
             <p class="project-desc">A 2D puzzle-adventure made solo for Brackeys Game Jam 2026.2.</p>
-            <div class="project-foot"><span>Play on itch.io</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
 
-        <a class="project-card archive-card" href="https://www.youtube.com/watch?v=1K7UUtEIKbw" target="_blank" rel="noopener" data-category="games" data-reveal data-delay="2">
+        <a class="project-card archive-card" href="work/once-upon-a-ball.html" data-category="games" data-reveal data-delay="2">
           <div class="project-media">
             <img src="assets/img/once-upon-a-ball.jpg" alt="Once Upon a Ball gameplay" width="1280" height="720" loading="lazy">
             <span class="card-badge">Unreal Engine</span>
@@ -155,11 +161,11 @@
             <div class="project-meta"><span>2026 · Team project</span><span class="meta-accent">Adventure</span></div>
             <h2 class="project-title">Once Upon a Ball</h2>
             <p class="project-desc">An adventure game where you roll through reimagined fairytale worlds. First chapter: Sleeping Beauty.</p>
-            <div class="project-foot"><span>Watch gameplay</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
 
-        <a class="project-card archive-card" href="https://cherrietan.itch.io/omamak" target="_blank" rel="noopener" data-category="games" data-reveal>
+        <a class="project-card archive-card" href="work/omamak.html" data-category="games" data-reveal>
           <div class="project-media">
             <img src="assets/img/omamak.jpg" alt="Omamak cover art" width="1200" height="675" loading="lazy">
             <span class="card-badge">Jam game</span>
@@ -168,29 +174,37 @@
             <div class="project-meta"><span>2026 · Team project</span><span class="meta-accent">Unity</span></div>
             <h2 class="project-title">Omamak</h2>
             <p class="project-desc">A 2D cooking game about a Malaysian mamak stall, made for Merdeka Jam 2026. I worked on systems and gameplay.</p>
-            <div class="project-foot"><span>Play on itch.io</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
 
-        <article class="project-card archive-card project-card--data" data-category="tools" data-reveal data-delay="1">
-          <div class="data-visual" aria-hidden="true">
-            <div class="data-row"><b>9.88×</b><span class="data-bar"><span style="width:100%"></span></span><span>insert</span></div>
-            <div class="data-row"><b>2.0×</b><span class="data-bar"><span style="width:50%"></span></span><span>delete</span></div>
-            <div class="data-row"><b>2.6→1.3%</b><span class="data-bar"><span class="is-muted" style="width:62%"></span></span><span>spread</span></div>
+        <a class="project-card archive-card" href="work/quadtree-visualiser.html" data-category="tools" data-reveal>
+          <div class="project-media">
+            <img src="assets/img/yt/cpp-quadtree-2.jpg" alt="Quadtree visualiser subdividing space" width="960" height="823" loading="lazy">
+            <span class="card-badge">C++17 / SFML</span>
           </div>
-          <div class="data-foot">10 trials · 100k operations · C++17</div>
           <div class="project-body">
-            <div class="project-meta"><span>2026 · Systems</span><span class="meta-accent">C++17</span></div>
-            <h2 class="project-title">C++ Systems</h2>
-            <p class="project-desc">A point quadtree with a live visualiser, and a pooled allocator for a linked list, benchmarked against new and delete.</p>
-            <div class="project-links">
-              <a href="https://github.com/buggycww/quadtree-visualiser" target="_blank" rel="noopener">Quadtree visualiser ↗</a>
-              <a href="https://github.com/buggycww/linkedlist-visualiser" target="_blank" rel="noopener">Linked-list visualiser ↗</a>
-            </div>
+            <div class="project-meta"><span>2026 · Systems</span><span class="meta-accent">Spatial partitioning</span></div>
+            <h2 class="project-title">Quadtree Visualiser</h2>
+            <p class="project-desc">A point quadtree for 2D spatial partitioning, with a live window for insertions, removals, and range queries.</p>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
-        </article>
+        </a>
 
-        <a class="project-card archive-card" href="https://www.youtube.com/watch?v=l0LTwCrEdIw" target="_blank" rel="noopener" data-category="games" data-reveal>
+        <a class="project-card archive-card" href="work/linkedlist-visualiser.html" data-category="tools" data-reveal data-delay="1">
+          <div class="project-media">
+            <img src="assets/img/yt/cpp-linkedlist-2.jpg" alt="Pooled linked list visualiser" width="960" height="593" loading="lazy">
+            <span class="card-badge">C++17 / SFML</span>
+          </div>
+          <div class="project-body">
+            <div class="project-meta"><span>2026 · Systems</span><span class="meta-accent">Allocators</span></div>
+            <h2 class="project-title">Linked-List Visualiser</h2>
+            <p class="project-desc">A doubly linked list with a node pool allocator, benchmarked against new and delete: 9.88× faster inserts.</p>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
+          </div>
+        </a>
+
+        <a class="project-card archive-card" href="work/dj-dash.html" data-category="games" data-reveal>
           <div class="project-media">
             <img src="assets/img/djdash.jpg" alt="DJ Dash mobile game title screen" width="600" height="996" loading="lazy" style="object-position:center 36%;">
             <span class="card-badge">Android</span>
@@ -199,11 +213,11 @@
             <div class="project-meta"><span>2024 · Solo</span><span class="meta-accent">Unity</span></div>
             <h2 class="project-title">DJ Dash!</h2>
             <p class="project-desc">A music-themed endless runner with procedural platforms and audio visualisation.</p>
-            <div class="project-foot"><span>Watch trailer</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
 
-        <a class="project-card archive-card" href="https://www.youtube.com/watch?v=1wuqJh8LvoE" target="_blank" rel="noopener" data-category="games" data-reveal data-delay="1">
+        <a class="project-card archive-card" href="work/veils-of-forgotten-power.html" data-category="games" data-reveal data-delay="1">
           <div class="project-media">
             <img src="assets/img/veils.jpg" alt="Veils of Forgotten Power gameplay" width="1280" height="720" loading="lazy">
             <span class="card-badge">Unity</span>
@@ -212,7 +226,7 @@
             <div class="project-meta"><span>2024 · Solo</span><span class="meta-accent">RPG systems</span></div>
             <h2 class="project-title">Veils of Forgotten Power</h2>
             <p class="project-desc">A 3D open-world RPG with inventory, branching dialogue, and a multi-phase boss.</p>
-            <div class="project-foot"><span>Watch gameplay</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
       </div>

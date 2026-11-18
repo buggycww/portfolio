@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quadtree Visualiser — Renee Chin</title>
+  <meta name="description" content="Quadtree Visualiser: a C++ point quadtree for 2D spatial partitioning, with an SFML window for live subdivision and range queries.">
+  <meta name="theme-color" content="#08070c">
+  <meta property="og:title" content="Quadtree Visualiser — Renee Chin">
+  <meta property="og:description" content="Quadtree Visualiser: a C++ point quadtree for 2D spatial partitioning, with an SFML window for live subdivision and range queries.">
+  <meta property="og:image" content="../assets/og.jpg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="../index.html" aria-label="Renee Chin — home">
+      <span class="brand-mark">RC</span>
+      <span>
+        <span class="brand-name">Renee Chin</span>
+        <span class="brand-role">Gameplay Programmer</span>
+      </span>
+    </a>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="../work.html" aria-current="page">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="status" href="../index.html#contact"><span class="status-dot"></span>Open to work</a>
+      <a class="btn btn--small" href="../assets/Renee_Chin_Resume.pdf" download>Résumé <span class="btn-icon">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-hero">
+      <p class="eyebrow">Project / 10 · Systems &amp; visualisation</p>
+      <h1 class="case-title">Quadtree Visualiser</h1>
+      <dl class="case-meta">
+        <div><dt>Role</dt><dd>Solo</dd></div>
+        <div><dt>Language</dt><dd>C++17</dd></div>
+        <div><dt>Libraries</dt><dd>SFML 3</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Code</dt><dd>github.com/buggycww/quadtree-visualiser</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-split case-split--no-video">
+      <div class="case-text">
+        <p class="lede">A quadtree in C++ with a window you can draw in. Insert points, drag a query box, and watch the tree split under your cursor.</p>
+        <p>A point quadtree partitions space by subdividing a cell into four children once it holds more than its capacity. The visualiser draws only the leaf cells, so you see the structure the code is actually using rather than an idealised diagram.</p>
+        <p>AABB::contains uses half-open intervals — [x, x + w) — so a point on a cell edge belongs to exactly one child. Internal nodes stay empty, queries never return duplicates, and removal walks a single path.</p>
+        <hr class="case-rule">
+        <h2 class="case-features-title">Features</h2>
+        <ul class="case-features">
+          <li>Point quadtree — insert, query, remove, and clear</li>
+          <li>Half-open intervals, so a point never lands in two children</li>
+          <li>Query pruning that skips whole subtrees</li>
+          <li>Leaf-only rendering that shows the real subdivision</li>
+          <li>Interactive window — click to insert, drag to query, right-click to remove</li>
+          <li>AABB with contains and intersects, kept in its own file</li>
+        </ul>
+        <div class="case-links">
+          <a class="btn btn--primary" href="https://github.com/buggycww/quadtree-visualiser" target="_blank" rel="noopener">Source code on GitHub <span class="btn-icon">↗</span></a>
+          <a class="btn" href="../work.html">All projects <span class="btn-icon">←</span></a>
+        </div>
+      </div>
+
+      <div class="case-shots">
+        <img class="case-shot" src="../assets/img/yt/cpp-quadtree-1.jpg" alt="The quadtree visualiser subdividing" width="960" height="823" loading="lazy">
+        <img class="case-shot" src="../assets/img/yt/cpp-quadtree-2.jpg" alt="A range query selecting points in the quadtree" width="960" height="823" loading="lazy">
+        <img class="case-shot" src="../assets/img/yt/cpp-quadtree-3.jpg" alt="The quadtree after more insertions" width="960" height="823" loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-next">
+      <div>
+        <p>Next project / 11</p>
+        <a href="linkedlist-visualiser.html">Linked-List Visualiser →</a>
+      </div>
+      <a class="project-arrow" href="linkedlist-visualiser.html" aria-label="Next project: Linked-List Visualiser">↗</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-mark">© 2026 Renee Chin</span>
+    <span>Designed &amp; built from scratch</span>
+    <a class="footer-top" href="#top">Back to top <span>↑</span></a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

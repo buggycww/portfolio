@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linked-List Visualiser — Renee Chin</title>
+  <meta name="description" content="Linked-List Visualiser: a doubly linked list with a node pool allocator, an SFML visualiser, and benchmarks against new/delete.">
+  <meta name="theme-color" content="#08070c">
+  <meta property="og:title" content="Linked-List Visualiser — Renee Chin">
+  <meta property="og:description" content="Linked-List Visualiser: a doubly linked list with a node pool allocator, an SFML visualiser, and benchmarks against new/delete.">
+  <meta property="og:image" content="../assets/og.jpg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="../index.html" aria-label="Renee Chin — home">
+      <span class="brand-mark">RC</span>
+      <span>
+        <span class="brand-name">Renee Chin</span>
+        <span class="brand-role">Gameplay Programmer</span>
+      </span>
+    </a>
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="../work.html" aria-current="page">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="status" href="../index.html#contact"><span class="status-dot"></span>Open to work</a>
+      <a class="btn btn--small" href="../assets/Renee_Chin_Resume.pdf" download>Résumé <span class="btn-icon">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="primary-nav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-hero">
+      <p class="eyebrow">Project / 11 · Systems &amp; benchmarking</p>
+      <h1 class="case-title">Linked-List Visualiser</h1>
+      <dl class="case-meta">
+        <div><dt>Role</dt><dd>Solo</dd></div>
+        <div><dt>Language</dt><dd>C++17</dd></div>
+        <div><dt>Libraries</dt><dd>SFML 3</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Code</dt><dd>github.com/buggycww/linkedlist-visualiser</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-split case-split--no-video">
+      <div class="case-text">
+        <p class="lede">A doubly linked list with a node pool, and a visualiser that proves it. Same list, two allocators, one benchmark.</p>
+        <p>The pooled version takes every node from one contiguous array and hands them out from a free list, so allocation never touches malloc. The visualiser shows the list and the pool side by side while you insert and delete.</p>
+        <p>The benchmark ran 100,000 insertions and 100,000 deletions per trial across ten trials. Inserts came out 9.88× faster, deletes 2.00× faster, and the max/mean spread narrowed from 2.6% to 1.3% — the frame-time predictability that matters more than the average.</p>
+        <hr class="case-rule">
+        <h2 class="case-features-title">Features</h2>
+        <ul class="case-features">
+          <li>Doubly linked list, written from scratch</li>
+          <li>Node pool allocator with a free list</li>
+          <li>9.88× faster inserts than new/delete</li>
+          <li>2.00× faster deletes on the same workload</li>
+          <li>Tighter spread — 2.6% down to 1.3%, so fewer spikes</li>
+          <li>Live visualiser for the list and the pool</li>
+        </ul>
+        <div class="case-links">
+          <a class="btn btn--primary" href="https://github.com/buggycww/linkedlist-visualiser" target="_blank" rel="noopener">Source code on GitHub <span class="btn-icon">↗</span></a>
+          <a class="btn" href="../work.html">All projects <span class="btn-icon">←</span></a>
+        </div>
+      </div>
+
+      <div class="case-shots">
+        <img class="case-shot" src="../assets/img/yt/cpp-linkedlist-1.jpg" alt="The pooled linked list visualiser" width="960" height="593" loading="lazy">
+        <img class="case-shot" src="../assets/img/yt/cpp-linkedlist-2.jpg" alt="Nodes being taken from the pool" width="960" height="593" loading="lazy">
+        <img class="case-shot" src="../assets/img/yt/cpp-linkedlist-3.jpg" alt="The list after a run of insertions" width="960" height="593" loading="lazy">
+      </div>
+    </div>
+
+    <div class="case-next">
+      <div>
+        <p>Next project / 12</p>
+        <a href="warrior-rpg.html">Warrior RPG →</a>
+      </div>
+      <a class="project-arrow" href="warrior-rpg.html" aria-label="Next project: Warrior RPG">↗</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span class="footer-mark">© 2026 Renee Chin</span>
+    <span>Designed &amp; built from scratch</span>
+    <a class="footer-top" href="#top">Back to top <span>↑</span></a>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

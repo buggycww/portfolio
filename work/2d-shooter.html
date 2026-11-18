@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>2D-Shooter — Renee Chin</title>
-  <meta name="description" content="2D-Shooter: a C++17 / SDL3 action platformer with box (AABB) collision, a quadtree, TMX tilemaps, and a debug overlay.">
+  <meta name="description" content="2D-Shooter: a C++17 / SDL3 action platformer with AABB collision, a quadtree, TMX tilemaps, and a debug overlay.">
   <meta name="theme-color" content="#08070c">
   <meta property="og:title" content="2D-Shooter — Renee Chin">
-  <meta property="og:description" content="A 2D action platformer built without an engine.">
+  <meta property="og:description" content="2D-Shooter: a C++17 / SDL3 action platformer with AABB collision, a quadtree, TMX tilemaps, and a debug overlay.">
   <meta property="og:image" content="../assets/og.jpg">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/style.css">
@@ -25,7 +25,8 @@
       </span>
     </a>
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="../work.html">Work</a>
+      <a href="../index.html">Home</a>
+      <a href="../work.html" aria-current="page">Work</a>
       <a href="../index.html#about">About</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
@@ -42,9 +43,6 @@
     <header class="case-hero">
       <p class="eyebrow">Project / 02 · Personal project</p>
       <h1 class="case-title">2D-Shooter</h1>
-      <p class="case-dek">
-        A 2D action platformer built from scratch in C++17 and SDL3. No engine.
-      </p>
       <dl class="case-meta">
         <div><dt>Role</dt><dd>Solo programming</dd></div>
         <div><dt>Language</dt><dd>C++17</dd></div>
@@ -54,55 +52,42 @@
       </dl>
     </header>
 
-    <div class="project-video">
-      <video controls preload="metadata" playsinline poster="../assets/img/2dshooter.jpg" aria-label="2D-Shooter gameplay">
-        <source src="../assets/video/2d-shooter.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-
-    <div class="project-gallery">
-      <img src="../assets/img/2d-shooter-shot-01.jpg" alt="2D-Shooter gameplay with debug overlay" width="1600" height="900" loading="lazy">
-      <img src="../assets/img/2d-shooter-shot-02.jpg" alt="2D-Shooter city level" width="1600" height="720" loading="lazy">
-      <img src="../assets/img/2d-shooter-shot-03.jpg" alt="2D-Shooter player jumping" width="1066" height="600" loading="lazy">
-    </div>
-
-    <article class="case-body">
-      <p class="lead">
-        I built 2D-Shooter to learn what a game engine does. It uses SDL3 for windowing, input, and
-        audio, tinyxml2 for TMX maps, and C++17 for the rest.
-      </p>
-
-      <h2>What I did</h2>
-      <ul>
-        <li>Wrote the game loop, input, rendering, audio, and asset loading.</li>
-        <li>Added box (AABB) collision with per-axis resolution. Actors resolve first, then level geometry.</li>
-        <li>Used a quadtree for collision checks so the game does not test every object against every tile.</li>
-        <li>Loaded levels from TMX files and spawned players and enemies from the map data.</li>
-        <li>Added animation states, parallax backgrounds, and a debug overlay with frame and quadtree stats.</li>
-      </ul>
-
-      <h2>Collision</h2>
-      <p>
-        Movement resolves one axis at a time. The game tests actors first, then rechecks the level
-        at the new position. Static geometry is resolved last, so the player cannot be pushed into a
-        wall. Bullets use the movement axis instead of the shallowest axis, because small fast
-        objects can pop out of walls.
-      </p>
-
-      <h2>Why this quadtree uses boxes</h2>
-      <p>
-        My separate quadtree visualiser stores points. For collision, a point is not enough: a large
-        box can overlap the player while its centre is outside the player. 2D-Shooter stores an
-        axis-aligned box for each object instead, so collision checks can find every box that
-        overlaps a query. The idea is the same; the stored shape is different.
-      </p>
-
-      <div class="case-links">
-        <a class="btn btn--primary" href="https://github.com/buggycww/2D-Shooter" target="_blank" rel="noopener">Source code <span class="btn-icon">↗</span></a>
-        <a class="btn" href="../work.html">All projects <span class="btn-icon">←</span></a>
+    <div class="case-split">
+      <div class="case-text">
+        <p class="lede">A 2D action platformer built from scratch in C++17 and SDL3. No engine, no shortcuts.</p>
+        <p>Everything is hand-written: the game loop, input, rendering, audio, asset loading, and collision. Levels are TMX files, so a level is data rather than code.</p>
+        <p>Movement resolves one axis at a time, actors first and level geometry second, so the player cannot be pushed through a wall. A quadtree keeps collision from testing every object against every tile.</p>
+        <hr class="case-rule">
+        <h2 class="case-features-title">Features</h2>
+        <ul class="case-features">
+          <li>AABB collision with per-axis resolution</li>
+          <li>Quadtree broad phase — only the boxes near the player are tested</li>
+          <li>TMX tilemaps loaded with tinyxml2</li>
+          <li>Animation states and parallax backgrounds</li>
+          <li>Debug overlay with frame time and quadtree stats</li>
+          <li>Audio, asset loading, and a fixed-timestep loop</li>
+        </ul>
+        <div class="case-links">
+          <a class="btn btn--primary" href="https://github.com/buggycww/2D-Shooter" target="_blank" rel="noopener">Source code on GitHub <span class="btn-icon">↗</span></a>
+          <a class="btn" href="../work.html">All projects <span class="btn-icon">←</span></a>
+        </div>
       </div>
-    </article>
+
+      <div class="case-media">
+        <div class="case-video">
+          <video controls preload="metadata" playsinline poster="../assets/img/2dshooter.jpg" aria-label="2D-Shooter gameplay">
+            <source src="../assets/video/2d-shooter.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="case-shots">
+        <img class="case-shot" src="../assets/img/2d-shooter-shot-01.jpg" alt="2D-Shooter gameplay with the debug overlay" width="1600" height="900" loading="lazy">
+        <img class="case-shot" src="../assets/img/2d-shooter-shot-02.jpg" alt="2D-Shooter city level" width="1600" height="720" loading="lazy">
+        <img class="case-shot" src="../assets/img/2d-shooter-shot-03.jpg" alt="2D-Shooter player jumping" width="1066" height="600" loading="lazy">
+      </div>
+    </div>
 
     <div class="case-next">
       <div>

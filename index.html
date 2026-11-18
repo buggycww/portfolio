@@ -27,9 +27,10 @@
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="work.html">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
     </nav>
 
     <div class="header-actions">
@@ -52,7 +53,7 @@
         </p>
         <p class="hero-lede" style="margin-top:14px;">
           Five months at <strong>Virtuos Kuala Lumpur</strong>, working on <strong>Rush-Cavate</strong>
-          in Genshin Impact and an unannounced multiplayer FPS.
+          in Genshin Impact.
         </p>
         <div class="hero-actions">
           <a class="btn btn--primary" href="#work">View projects <span class="btn-icon">↓</span></a>
@@ -110,18 +111,18 @@
       <div class="section-head" data-reveal>
         <span class="section-index">01 / Projects</span>
         <h2 id="work-title">Selected <em>projects</em></h2>
-        <a class="text-link" href="work.html">All projects <span>↗</span></a>
+        <a class="btn" href="work.html">All 12 projects <span class="btn-icon">↗</span></a>
       </div>
 
-      <div class="featured-grid">
-        <a class="project-card project-card--ecoworld" href="work/ecoworld.html" data-reveal>
+      <div class="project-grid">
+        <a class="project-card project-card--compact" href="work/ecoworld.html" data-reveal>
           <div class="project-media">
             <img src="assets/img/ecoworld-detail1.jpg" alt="EcoWorld ecosystem on a table" width="720" height="500" loading="eager">
             <span class="card-badge card-badge--primary">National 2nd Runner-Up</span>
           </div>
           <div class="project-body">
             <div class="project-meta">
-              <span>01 / Final-year project · 2026</span>
+              <span>01 / Final-year · 2026</span>
               <span class="meta-accent">Unity · MR</span>
             </div>
             <h3 class="project-title">EcoWorld</h3>
@@ -129,19 +130,14 @@
               A mixed-reality ecology game for Meta Quest 3. Weather, animals, and disasters affect
               each other, and every choice changes the world.
             </p>
-            <ul class="project-specs">
-              <li><span>01</span> Organism AI</li>
-              <li><span>02</span> Weather and time of day</li>
-              <li><span>03</span> Disaster events</li>
-            </ul>
             <div class="project-foot">
-              <span>Solo project</span>
+              <span>View project</span>
               <span class="project-arrow">↗</span>
             </div>
           </div>
         </a>
 
-        <a class="project-card project-card--shooter" href="work/2d-shooter.html" data-reveal data-delay="1">
+        <a class="project-card project-card--compact" href="work/2d-shooter.html" data-reveal data-delay="1">
           <div class="project-media">
             <img src="assets/img/2dshooter.jpg" alt="2D-Shooter gameplay with pixel-art city and enemies" width="1600" height="900" loading="eager">
             <span class="card-badge card-badge--right">C++17 / SDL3</span>
@@ -157,13 +153,33 @@
               animation, audio, and a debug overlay.
             </p>
             <div class="project-foot">
-              <span>Personal project</span>
+              <span>View project</span>
               <span class="project-arrow">↗</span>
             </div>
           </div>
         </a>
 
-        <a class="project-card project-card--miliastra" href="work/rush-cavate.html" data-reveal>
+        <a class="project-card project-card--compact" href="work/rush-cavate.html" data-reveal data-delay="2">
+          <div class="project-media">
+            <div class="miliastra-art" aria-hidden="true">
+              <div class="miliastra-grid">
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell is-bomb"></span>
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell is-hot"></span>
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell is-bomb"></span>
+                <span class="miliastra-cell"></span>
+                <span class="miliastra-cell"></span>
+              </div>
+              <span class="miliastra-label">Grid / elemental bombs / range</span>
+            </div>
+            <span class="card-badge">Playable in-game</span>
+          </div>
           <div class="project-body">
             <div class="project-meta">
               <span>03 / Professional · 2026</span>
@@ -179,28 +195,9 @@
               <span class="project-arrow">↗</span>
             </div>
           </div>
-          <div class="miliastra-art" aria-hidden="true">
-            <div class="miliastra-grid">
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell is-bomb"></span>
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell is-hot"></span>
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell is-bomb"></span>
-              <span class="miliastra-cell"></span>
-              <span class="miliastra-cell"></span>
-            </div>
-            <span class="miliastra-label">Grid / elemental bombs / range</span>
-          </div>
         </a>
-      </div>
 
-      <div class="more-grid">
-        <a class="project-card project-card--compact" href="https://www.youtube.com/watch?v=BmdbN74KQ8o" target="_blank" rel="noopener" data-reveal>
+        <a class="project-card project-card--compact" href="work/misled.html" data-reveal>
           <div class="project-media">
             <img src="assets/img/misled.jpg" alt="The Misled title screen" width="1200" height="720" loading="lazy">
             <span class="card-badge">Unreal Engine</span>
@@ -212,27 +209,11 @@
               A souls-like action RPG. I worked on chainable player attacks, shield behaviour, and
               the final boss encounter.
             </p>
-            <div class="project-foot"><span>Watch gameplay</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
 
-        <a class="project-card project-card--compact" href="https://buggycww.itch.io/everything-is-against-you" target="_blank" rel="noopener" data-reveal data-delay="1">
-          <div class="project-media">
-            <img src="assets/img/everything-wide.jpg" alt="Everything is Against You cover art" width="800" height="500" loading="lazy">
-            <span class="card-badge">Published jam game</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>Solo · 2026</span><span class="meta-accent">Unity</span></div>
-            <h3 class="project-title">Everything is Against You</h3>
-            <p class="project-desc">
-              A 2D puzzle-adventure made solo for Brackeys Game Jam 2026.2. Traps, dialogue, and
-              checkpoints.
-            </p>
-            <div class="project-foot"><span>Play on itch.io</span><span class="project-arrow">↗</span></div>
-          </div>
-        </a>
-
-        <a class="project-card project-card--compact" href="https://www.youtube.com/watch?v=1K7UUtEIKbw" target="_blank" rel="noopener" data-reveal data-delay="2">
+        <a class="project-card project-card--compact" href="work/once-upon-a-ball.html" data-reveal data-delay="2">
           <div class="project-media">
             <img src="assets/img/once-upon-a-ball.jpg" alt="Once Upon a Ball gameplay" width="1280" height="720" loading="lazy">
             <span class="card-badge">Unreal Engine</span>
@@ -244,61 +225,33 @@
               An adventure game where you roll through reimagined fairytale worlds. The first
               chapter is Sleeping Beauty.
             </p>
-            <div class="project-foot"><span>Watch gameplay</span><span class="project-arrow">↗</span></div>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
           </div>
         </a>
 
-        <a class="project-card project-card--compact" href="https://cherrietan.itch.io/omamak" target="_blank" rel="noopener" data-reveal>
+        <a class="project-card project-card--compact" href="work/warrior-rpg.html" data-reveal data-delay="1">
           <div class="project-media">
-            <img src="assets/img/omamak.jpg" alt="Omamak cover art" width="1200" height="675" loading="lazy">
-            <span class="card-badge">Jam game</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>Team project · 2026</span><span class="meta-accent">Unity</span></div>
-            <h3 class="project-title">Omamak</h3>
-            <p class="project-desc">
-              A 2D cooking game about a Malaysian mamak stall, made with a team for Merdeka Jam
-              2026. I worked on systems and gameplay.
-            </p>
-            <div class="project-foot"><span>Play on itch.io</span><span class="project-arrow">↗</span></div>
-          </div>
-        </a>
-
-        <a class="project-card project-card--compact" href="https://www.youtube.com/watch?v=l0LTwCrEdIw" target="_blank" rel="noopener" data-reveal data-delay="1">
-          <div class="project-media">
-            <img src="assets/img/djdash.jpg" alt="DJ Dash mobile game title screen" width="600" height="996" loading="lazy" style="object-position:center 36%;">
-            <span class="card-badge">Android</span>
-          </div>
-          <div class="project-body">
-            <div class="project-meta"><span>Solo · 2024</span><span class="meta-accent">Unity</span></div>
-            <h3 class="project-title">DJ Dash!</h3>
-            <p class="project-desc">
-              A music-themed endless runner with procedural platforms and audio visualisation.
-            </p>
-            <div class="project-foot"><span>Watch trailer</span><span class="project-arrow">↗</span></div>
-          </div>
-        </a>
-
-        <article class="project-card project-card--compact project-card--data" data-reveal data-delay="2">
-          <div class="data-visual" aria-hidden="true">
-            <div class="data-row"><b>9.88×</b><span class="data-bar"><span style="width:100%"></span></span><span>insert</span></div>
-            <div class="data-row"><b>2.0×</b><span class="data-bar"><span style="width:50%"></span></span><span>delete</span></div>
-            <div class="data-row"><b>2.6→1.3%</b><span class="data-bar"><span class="is-muted" style="width:62%"></span></span><span>spread</span></div>
-          </div>
-          <div class="data-foot">10 trials · 100k operations · C++17</div>
-          <div class="project-body">
-            <div class="project-meta"><span>Systems · 2026</span><span class="meta-accent">C++17</span></div>
-            <h3 class="project-title">C++ Systems</h3>
-            <p class="project-desc">
-              A point quadtree with a live visualiser, and a pooled allocator for a linked list,
-              benchmarked against new and delete.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/buggycww/quadtree-visualiser" target="_blank" rel="noopener">Quadtree visualiser ↗</a>
-              <a href="https://github.com/buggycww/linkedlist-visualiser" target="_blank" rel="noopener">Linked-list visualiser ↗</a>
+            <div class="warrior-art" aria-hidden="true">
+              <span class="warrior-dmg">1,824</span>
+              <div class="warrior-bars">
+                <span class="warrior-row"><span>HP</span><span class="warrior-bar"><i style="width:74%"></i></span></span>
+                <span class="warrior-row"><span>Rage</span><span class="warrior-bar warrior-bar--rage"><i style="width:42%"></i></span></span>
+                <span class="warrior-row"><span>Atk</span><span class="warrior-bar warrior-bar--atk"><i style="width:61%"></i></span></span>
+              </div>
+              <span class="warrior-label">GAS / attributes / execution calc</span>
             </div>
+            <span class="card-badge">Unreal Engine 5</span>
           </div>
-        </article>
+          <div class="project-body">
+            <div class="project-meta"><span>Solo · 2026</span><span class="meta-accent">C++ · GAS</span></div>
+            <h3 class="project-title">Warrior RPG</h3>
+            <p class="project-desc">
+              A third-person action RPG in Unreal Engine 5. Gameplay Ability System abilities,
+              attributes, damage execution, and enemy AI.
+            </p>
+            <div class="project-foot"><span>View project</span><span class="project-arrow">↗</span></div>
+          </div>
+        </a>
       </div>
     </section>
 

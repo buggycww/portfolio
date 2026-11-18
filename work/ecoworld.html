@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>EcoWorld — Renee Chin</title>
-  <meta name="description" content="EcoWorld: a mixed-reality ecology game for Meta Quest 3, awarded Second Runner-Up at Malaysia Creative Tech Competition 2026.">
+  <meta name="description" content="EcoWorld: a mixed-reality ecology game for Meta Quest 3. Build a rainforest on a table, change the weather, and watch the food web react.">
   <meta name="theme-color" content="#08070c">
   <meta property="og:title" content="EcoWorld — Renee Chin">
-  <meta property="og:description" content="A mixed-reality ecology game for Meta Quest 3.">
+  <meta property="og:description" content="EcoWorld: a mixed-reality ecology game for Meta Quest 3. Build a rainforest on a table, change the weather, and watch the food web react.">
   <meta property="og:image" content="../assets/og.jpg">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/style.css">
@@ -25,7 +25,8 @@
       </span>
     </a>
     <nav class="nav" id="primary-nav" aria-label="Primary">
-      <a href="../work.html">Work</a>
+      <a href="../index.html">Home</a>
+      <a href="../work.html" aria-current="page">Work</a>
       <a href="../index.html#about">About</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
@@ -42,10 +43,6 @@
     <header class="case-hero">
       <p class="eyebrow">Project / 01 · Solo final-year project</p>
       <h1 class="case-title">EcoWorld</h1>
-      <p class="case-dek">
-        A mixed-reality ecology game for Meta Quest 3. Build an ecosystem on a table, change the
-        weather, and see what happens.
-      </p>
       <dl class="case-meta">
         <div><dt>Role</dt><dd>Solo design &amp; programming</dd></div>
         <div><dt>Engine</dt><dd>Unity</dd></div>
@@ -55,61 +52,46 @@
       </dl>
     </header>
 
-    <div class="project-video">
-      <iframe
-        src="https://www.youtube-nocookie.com/embed/ZV7wHhtfDtU?rel=0"
-        title="EcoWorld gameplay"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen></iframe>
-    </div>
-
-    <div class="project-gallery">
-      <img src="../assets/img/ecoworld-shot-01.jpg" alt="EcoWorld running on a Meta Quest 3" width="720" height="720" loading="lazy">
-      <img src="../assets/img/ecoworld-shot-02.jpg" alt="EcoWorld ecosystem on a table" width="720" height="500" loading="lazy">
-      <img src="../assets/img/ecoworld-shot-03.jpg" alt="EcoWorld weather and organism UI" width="720" height="720" loading="lazy">
-    </div>
-
-    <article class="case-body">
-      <p class="lead">
-        EcoWorld was my final-year project. It is a game about how a small change in an ecosystem
-        can affect everything else.
-      </p>
-
-      <h2>What I did</h2>
-      <ul>
-        <li>Built the game in Unity for Meta Quest 3.</li>
-        <li>Wrote a state machine for organism behaviour. Animals react to food, safety, and the environment.</li>
-        <li>Built time-of-day and weather systems that change the conditions organisms live in.</li>
-        <li>Added disaster events that stress the ecosystem and force the player to respond.</li>
-        <li>Ran playtests and changed what the game shows based on what players noticed.</li>
-      </ul>
-
-      <h2>How it works</h2>
-      <p>
-        The game is split into three parts: organisms, environment, and events. Organisms choose
-        what to do from their needs and the current conditions. Weather and disasters change those
-        conditions, which changes what organisms do next. The player can change one variable and
-        watch the results.
-      </p>
-
-      <h2>Result</h2>
-      <p>
-        Second Runner-Up at Malaysia Creative Tech Competition 2026, selected from 87 entries across
-        23 institutions.
-      </p>
-
-      <h2>What I would improve</h2>
-      <p>
-        Better onboarding: teach the cause and effect before asking the player to optimise it. I
-        would also set a clearer performance budget for each scene.
-      </p>
-
-      <div class="case-links">
-        <a class="btn btn--primary" href="https://www.youtube.com/watch?v=ZV7wHhtfDtU" target="_blank" rel="noopener">Watch on YouTube <span class="btn-icon">↗</span></a>
-        <a class="btn" href="../work.html">All projects <span class="btn-icon">←</span></a>
+    <div class="case-split">
+      <div class="case-text">
+        <p class="lede">A mixed-reality ecology game you play on a table. Build a rainforest, change the weather, and watch the ecosystem answer back.</p>
+        <p>EcoWorld runs on Meta Quest 3 and turns a tabletop into a Southeast Asian rainforest. You place organisms, change the conditions they live in, and watch the food web react. Nothing is scripted: every creature reads its own needs and the current weather, then decides what to do next.</p>
+        <p>It was my final-year project. The point was cause and effect you can see: change one variable, then follow it through the population, the weather, and the next disaster.</p>
+        <p class="case-note">Second Runner-Up at Malaysia Creative Tech Competition 2026, selected from 87 entries across 23 institutions.</p>
+        <hr class="case-rule">
+        <h2 class="case-features-title">Features</h2>
+        <ul class="case-features">
+          <li>Organism AI — a state machine per creature, driven by hunger, safety, and the environment</li>
+          <li>Weather and time of day — conditions that change what every organism wants</li>
+          <li>Disaster events — droughts, storms, and fires that stress the ecosystem and force a response</li>
+          <li>In-game reference tools — the ecology information a player needs, without leaving the table</li>
+          <li>Tabletop mixed reality — the simulation sits on a real surface, at real-world scale</li>
+          <li>Playtest-driven UI — what the game shows came from watching players miss it</li>
+        </ul>
+        <div class="case-links">
+          <a class="btn btn--primary" href="https://www.youtube.com/watch?v=ZV7wHhtfDtU" target="_blank" rel="noopener">Watch the full playthrough <span class="btn-icon">↗</span></a>
+          <a class="btn" href="../work.html">All projects <span class="btn-icon">←</span></a>
+        </div>
       </div>
-    </article>
+
+      <div class="case-media">
+        <div class="case-video" data-youtube="ZV7wHhtfDtU" data-youtube-title="EcoWorld gameplay">
+          <iframe
+            src="https://www.youtube.com/embed/ZV7wHhtfDtU?rel=0&amp;modestbranding=1&amp;playsinline=1"
+            title="EcoWorld gameplay"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="case-shots">
+        <img class="case-shot" src="../assets/img/ecoworld-shot-01.jpg" alt="EcoWorld running on a Meta Quest 3" width="720" height="720" loading="lazy">
+        <img class="case-shot" src="../assets/img/ecoworld-shot-02.jpg" alt="The EcoWorld ecosystem on a table" width="720" height="500" loading="lazy">
+        <img class="case-shot" src="../assets/img/ecoworld-shot-03.jpg" alt="EcoWorld weather and organism UI" width="720" height="720" loading="lazy">
+      </div>
+    </div>
 
     <div class="case-next">
       <div>

@@ -40,6 +40,150 @@
     });
   }
 
+  /* ---------------------------------------------------------------------
+     Ticker
+     The marquee travels exactly one sequence's width per cycle, so that
+     sequence has to be at least as wide as the viewport or a gap opens up
+     at the end of the strip. Repeat the authored items until one sequence
+     covers the viewport, then print the sequence twice.
+     --------------------------------------------------------------------- */
+
+  const ticker = document.querySelector(".ticker");
+  const tickerTrack = document.querySelector(".ticker-track");
+
+  if (ticker && tickerTrack) {
+    const seed = Array.from(tickerTrack.children).map((item) => item.cloneNode(true));
+    const PIXELS_PER_SECOND = 46;
+
+    const buildTicker = () => {
+      const viewport = ticker.clientWidth;
+      if (!viewport || !seed.length) return;
+
+      // Measure one sequence from a clean copy.
+      tickerTrack.replaceChildren(...seed.map((item) => item.cloneNode(true)));
+      const sequenceWidth = tickerTrack.scrollWidth;
+      if (!sequenceWidth) return;
+
+      const repeats = Math.max(2, Math.ceil(viewport / sequenceWidth) + 1);
+      const sequence = [];
+      for (let i = 0; i < repeats; i += 1) {
+        seed.forEach((item) => sequence.push(item.cloneNode(true)));
+      }
+
+      const fragment = document.createDocumentFragment();
+      sequence.concat(sequence.map((item) => item.cloneNode(true))).forEach((item) => {
+        fragment.appendChild(item);
+      });
+      tickerTrack.replaceChildren(fragment);
+
+      // One sequence per cycle keeps the speed steady at any width.
+      tickerTrack.style.animationDuration =
+        Math.round((sequenceWidth * repeats) / PIXELS_PER_SECOND) + "s";
+    };
+
+    let resizeTimer = 0;
+    const queueBuild = () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(buildTicker, 150);
+    };
+
+    buildTicker();
+    window.addEventListener("resize", queueBuild, { passive: true });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(buildTicker).catch(() => {});
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     YouTube fallback
+     A YouTube embed opened from disk has no valid origin and fails with
+     error 153, so replace it with a poster that links out instead. Served
+     over http(s) the real player stays.
+     --------------------------------------------------------------------- */
+
+  if (window.location.protocol === "file:") {
+    document.querySelectorAll("[data-youtube]").forEach((frame) => {
+      const id = frame.getAttribute("data-youtube");
+      if (!id) return;
+      const label = frame.getAttribute("data-youtube-title") || "Video";
+
+      frame.innerHTML =
+        '<a class="case-video-link" href="https://www.youtube.com/watch?v=' + id +
+        '" target="_blank" rel="noopener">' +
+        '<img src="https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg" alt="">' +
+        '<span class="case-video-play" aria-hidden="true">▶</span>' +
+        '<span class="case-video-note">' + label + " — watch on YouTube ↗</span>" +
+        "</a>";
+    });
+  }
+
+  /* ---------------------------------------------------------------------
+     Screenshot lightbox
+     Click a project screenshot to see it full size, with arrows to move
+     between the shots on the page. Esc, the close button, or a click on
+     the backdrop closes it.
+     --------------------------------------------------------------------- */
+
+  const lightboxShots = Array.from(
+    document.querySelectorAll(".case-shot:not(.case-shot--filler)")
+  );
+
+  if (lightboxShots.length && typeof HTMLDialogElement === "function") {
+    const dialog = document.createElement("dialog");
+    dialog.className = "lightbox";
+    dialog.setAttribute("aria-label", "Enlarged screenshot");
+    dialog.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="Close image">✕</button>' +
+      '<button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous image">‹</button>' +
+      '<img alt="">' +
+      '<button type="button" class="lightbox-nav lightbox-next" aria-label="Next image">›</button>' +
+      '<p class="lightbox-caption"></p>';
+    document.body.appendChild(dialog);
+
+    const image = dialog.querySelector("img");
+    const caption = dialog.querySelector(".lightbox-caption");
+    let current = 0;
+
+    const show = (index) => {
+      current = (index + lightboxShots.length) % lightboxShots.length;
+      const shot = lightboxShots[current];
+      image.src = shot.currentSrc || shot.src;
+      image.alt = shot.alt || "";
+      caption.textContent =
+        (shot.alt || "Screenshot") + " — " + (current + 1) + " / " + lightboxShots.length;
+    };
+
+    const open = (index) => {
+      show(index);
+      dialog.showModal();
+    };
+
+    lightboxShots.forEach((shot, index) => {
+      shot.setAttribute("tabindex", "0");
+      shot.setAttribute("role", "button");
+      shot.addEventListener("click", () => open(index));
+      shot.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          open(index);
+        }
+      });
+    });
+
+    dialog.querySelector(".lightbox-close").addEventListener("click", () => dialog.close());
+    dialog.querySelector(".lightbox-prev").addEventListener("click", () => show(current - 1));
+    dialog.querySelector(".lightbox-next").addEventListener("click", () => show(current + 1));
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") show(current + 1);
+      if (event.key === "ArrowLeft") show(current - 1);
+    });
+  }
+
   const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
   if (revealItems.length) {
     if (!("IntersectionObserver" in window)) {
