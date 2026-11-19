@@ -59,6 +59,31 @@ portfolio/
 └─ README.md
 ```
 
+## Theme
+
+Colours come from the first palette in `css/ref.css` and live in the `:root` block at the top of
+`css/style.css`.
+
+| Token | Value | Role |
+|---|---|---|
+| `--background` | `#0e0d12` | the page |
+| `--card` | `#1c1c20` | boxes on the page: cards, ticker, About and Contact bands |
+| `--card-2` | `#232327` | boxes inside boxes, e.g. the quick-facts card |
+| `--border` | `#26252a` | hairlines and box edges |
+| `--foreground` | `#b9b9bb` | all main text |
+| `--muted-foreground` | `#9f9fa2` | secondary text |
+| `--primary` | `#9d85c8` | buttons, highlighted boxes, active filters |
+| `--secondary` | `#c8b794` | complement: display italics, badges, card meta |
+| `--accent` | `#a2d892` | icons, numbers, eyebrow labels, quote rules, small highlights |
+
+Only three surfaces exist, so the page reads as background → box → inner box. Colour is carried by
+small elements rather than big fields. Where elements repeat - the project cards and the ticker
+separators - the colours cycle primary → secondary → accent by `nth-child`, the way the reference
+colours a bar chart.
+
+Alpha variants read the `*-rgb` channel variables. To try another option, swap the nine palette
+values for the second or third block in `css/ref.css` and update `theme-color` in each page.
+
 ## Project pages
 
 Every card on the homepage and in the archive links to a page in `work/`, and every page uses the

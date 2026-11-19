@@ -15,7 +15,7 @@
   const POINT_COUNT = 110;
   const QUERY_W = 148;
   const QUERY_H = 108;
-  const ACCENT = "195, 155, 255";
+  const ACCENT = "157, 133, 200";
 
   let width = 0;
   let height = 0;
@@ -137,8 +137,8 @@
       depth === 0
         ? `rgba(${ACCENT},0.22)`
         : depth < 3
-        ? "rgba(243,238,251,0.10)"
-        : "rgba(243,238,251,0.055)";
+        ? "rgba(232,232,234,0.10)"
+        : "rgba(232,232,234,0.055)";
     ctx.lineWidth = 1;
     ctx.strokeRect(node.x + 0.5, node.y + 0.5, node.w - 1, node.h - 1);
 
@@ -203,7 +203,7 @@
     ctx.clearRect(0, 0, width, height);
 
     // faint base grid
-    ctx.strokeStyle = "rgba(243,238,251,0.035)";
+    ctx.strokeStyle = "rgba(232,232,234,0.035)";
     ctx.lineWidth = 1;
     for (let x = 0; x < width; x += 24) {
       ctx.beginPath();
@@ -233,7 +233,7 @@
         ctx.arc(point.x, point.y, 6.5, 0, Math.PI * 2);
         ctx.stroke();
       } else {
-        ctx.fillStyle = "rgba(243,238,251,0.42)";
+        ctx.fillStyle = "rgba(232,232,234,0.42)";
         ctx.beginPath();
         ctx.arc(point.x, point.y, 1.8, 0, Math.PI * 2);
         ctx.fill();
@@ -244,7 +244,7 @@
 
     // corner label
     ctx.font = '8px "Cascadia Mono", Consolas, monospace';
-    ctx.fillStyle = "rgba(243,238,251,0.35)";
+    ctx.fillStyle = "rgba(232,232,234,0.35)";
     ctx.fillText(String(points.length).padStart(3, "0") + " POINTS", 14, height - 12);
   }
 
